@@ -1,0 +1,66 @@
+<requests>
+    <request
+        name="Экшн"
+        image="action"
+        id="28" />
+    <request
+        name="Анимационный"
+        image="animation"
+        id="16" />
+    <request
+        name="Комедия"
+        image="comedy"
+        id="35" />
+    <request
+        name="Криминал"
+        image="criminal"
+        id="80" />
+    <request
+        name="Приключения"
+        image="detective"
+        id="12" />
+    <request
+        name="Документальный"
+        image="documental"
+        id="99" />
+    <request
+        name="Драма"
+        image="drama"
+        id="18" />
+    <request
+        name="Эротика"
+        image="erotic"
+        id="0" />
+    <request
+        name="Фантастика"
+        image="fantastic"
+        id="14" />
+    <request
+        name="Исторический"
+        image="historical"
+        id="36" />
+    <request
+        name="Мелодрама"
+        image="melodrama"
+        id="10749" />
+    <request
+        name="Мюзикл"
+        image="musical"
+        id="10402" />
+    <request
+        name="Спорт"
+        image="sport"
+        id="0" />
+    <request
+        name="Триллер"
+        image="thriller"
+        id="53" />
+    <request
+        name="Ужасы"
+        image="horror"
+        id="27" />
+    <request
+        name="Вестерн"
+        image="western"
+        id="37" />
+</requests>

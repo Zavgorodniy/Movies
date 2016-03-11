@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Movies</string>
+    <string name="st_select_years">Выберите интервал выпуска:</string>
+    <string name="st_select_genre">Выберите жанр:</string>
+    <string name="st_no_description">Описание отсутствует.</string>
+    <string name="st_rating">Рейтинг: </string>
+    <string name="st_genre">Жанр: </string>
+    <string name="st_date">Дата: </string>
+    <string name="st_empty_list">Выберите жанр, для получения списка фильмов</string>
+    <string-array name="st_years">
+        <item>любой год выпуска</item>
+        <item>1960 &#8211; 1980</item>
+        <item>1980 &#8211; 1990</item>
+        <item>1990 &#8211; 2000</item>
+        <item>2000 &#8211; 2005</item>
+        <item>2005 &#8211; 2010</item>
+        <item>2010 &#8211; 2015</item>
+        <item>2016</item>
+    </string-array>
+</resources>
