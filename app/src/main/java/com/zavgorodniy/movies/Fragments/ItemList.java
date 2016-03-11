@@ -12,6 +12,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.zavgorodniy.movies.Adapter.ItemListAdapter;
+import com.zavgorodniy.movies.MainActivity;
 import com.zavgorodniy.movies.R;
 import com.zavgorodniy.movies.Service.Controller;
 import com.zavgorodniy.movies.Service.Item;
@@ -27,10 +28,20 @@ public class ItemList extends ListFragment implements JsonReq.AsyncResult  {
     ItemListAdapter itemsAdapter;
     ArrayAdapter<String> rangeListAdapter;
     Controller controller;
+    int request;
 
     public ItemList() {
     }
 
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        if (savedInstanceState.containsKey("request")) {
+            request = getArguments().getInt("request");
+        }
+    }
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -62,6 +73,14 @@ public class ItemList extends ListFragment implements JsonReq.AsyncResult  {
     public void sendRequest(int request) {
         itemsAdapter.clear();
         controller.start(this, request);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (request != 0) {
+            sendRequest(request);
+        }
     }
 
     @Override

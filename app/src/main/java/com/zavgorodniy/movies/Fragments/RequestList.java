@@ -22,6 +22,8 @@ public class RequestList extends ListFragment {
 
     List<RequestItem> requestItems;
 
+    RequestFragmentListener rfl;
+
     public RequestList() {
     }
 
@@ -49,8 +51,8 @@ public class RequestList extends ListFragment {
         if (request == 0)
             Toast.makeText(getActivity(), "Доступно в платном обновлении!", Toast.LENGTH_SHORT).show();
         else {
-//            ItemList itemList = (ItemList) getFragmentManager().findFragmentById(R.id.item_list_fragment);
-//            itemList.sendRequest(request);
+            rfl = (RequestFragmentListener) getActivity();
+            rfl.requestFragmentInteraction(request);
         }
     }
 
@@ -75,5 +77,9 @@ public class RequestList extends ListFragment {
         }
 
         return requestItems;
+    }
+
+    public interface RequestFragmentListener {
+        void requestFragmentInteraction(int i);
     }
 }
