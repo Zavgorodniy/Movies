@@ -1,5 +1,7 @@
 package com.zavgorodniy.movies.Service;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +20,7 @@ public class Controller {
     public void start(JsonReq.AsyncResult asyncResult, int value){
         items = new ArrayList<>();
         JsonReq jsonReq  = new JsonReq(asyncResult);
+        Log.d("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", String.valueOf(value));
         jsonReq.execute(value);
     }
 

@@ -1,5 +1,6 @@
-package com.zavgorodniy.movies.Fragments;
+package com.zavgorodniy.movies;
 
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -18,59 +19,57 @@ import com.zavgorodniy.movies.Service.Item;
 
 import java.io.InputStream;
 
-public class ItemInfo extends Fragment {
-
-    Item item;
+public class ItemInfo extends Activity {
 
     public ItemInfo() {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.item_info, container, false);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.item_info);
 
-        item = (Item) savedInstanceState.get("item");
         StringBuilder buf = new StringBuilder();
 
-        new DownloadImageTask((ImageView) view.findViewById(R.id.iv_image)).execute("http://image.tmdb.org/t/p/w300/" + item.getImageId());
+        new DownloadImageTask((ImageView) findViewById(R.id.iv_image)).execute("http://image.tmdb.org/t/p/w300/" + getIntent().getStringExtra("imageId"));
 
-        TextView description = (TextView) view.findViewById(R.id.tv_description);
+        TextView description = (TextView) findViewById(R.id.tv_description);
 
-        if (item.getDescription() != null)
-            description.setText(item.getDescription());
+        if (!getIntent().getStringExtra("description").equals("null"))
+            description.setText(getIntent().getStringExtra("description"));
         else
             description.setText(R.string.st_no_description);
 
-        TextView name = (TextView) view.findViewById(R.id.tv_name);
-        name.setText(item.getName());
+        TextView name = (TextView) findViewById(R.id.tv_name);
+        name.setText(getIntent().getStringExtra("name"));
 
-        buf.append(R.string.st_rating);
-        buf.append(item.getRating());
-        TextView rating = (TextView) view.findViewById(R.id.tv_rating);
+        buf.append(getResources().getString(R.string.st_rating));
+        buf.append(" ");
+        buf.append(getIntent().getStringExtra("rating"));
+        TextView rating = (TextView) findViewById(R.id.tv_rating);
         rating.setText(buf);
 
         buf.setLength(0);
-        buf.append(R.string.st_genre);
-        buf.append(item.getRating());
-        TextView genre = (TextView) view.findViewById(R.id.tv_genre);
+        buf.append(getResources().getString(R.string.st_genre));
+        buf.append(" ");
+        buf.append(getIntent().getStringExtra("genre"));
+        TextView genre = (TextView) findViewById(R.id.tv_genre);
         genre.setText(buf);
 
         buf.setLength(0);
-        buf.append(R.string.st_date);
-        buf.append(item.getRating());
-        TextView date = (TextView) view.findViewById(R.id.tv_date);
+        buf.append(getResources().getString(R.string.st_date));
+        buf.append(" ");
+        buf.append(getIntent().getStringExtra("date"));
+        TextView date = (TextView) findViewById(R.id.tv_date);
         date.setText(buf);
 
-        Button back = (Button) view.findViewById(R.id.bt_back);
+        Button back = (Button) findViewById(R.id.bt_back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                finish();
             }
         });
-
-        return view;
     }
 
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
